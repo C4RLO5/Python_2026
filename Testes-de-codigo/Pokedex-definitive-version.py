@@ -215,14 +215,18 @@ O que deseja? ---> '''))
             break'''
         
         match escolha:
-            case 1: ver_pokedex()
-            case 2: comparar_pokemon()
-            case 3: adicionar_pokemon()
-            case 4: remover_pokemon()
-        if escolha == 5:
-            print('Obrigado por testar esse projeto!!!')
-            break
-        
+            case 1: 
+                ver_pokedex()
+            case 2: 
+                comparar_pokemon()
+            case 3: 
+                adicionar_pokemon()
+            case 4: 
+                remover_pokemon()
+            case 5: 
+                print('Obrigado por testar esse projeto...')
+                break
+            case _: print('Opção inválida...')
 
 
 def ver_pokedex():
@@ -254,7 +258,7 @@ def ver_pokedex():
     except IndexError:
         print('A opção escolhida não existe, tente novamente...') 
         #return numeração_pokemon[escolha_pokemon - 1]
-        
+
 '''
 
 Pokedex v1.2, antiga funcionadade no codigo como era utilizado.
