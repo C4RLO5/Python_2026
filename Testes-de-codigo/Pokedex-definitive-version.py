@@ -201,6 +201,7 @@ def menu_pokedex():
 [5] Sair                           █
 ====================================
 O que deseja? ---> '''))
+        '''
         if escolha == 1:
             ver_pokedex()
         elif escolha == 2:
@@ -211,7 +212,17 @@ O que deseja? ---> '''))
             remover_pokemon()
         elif escolha == 5:
             print('Obrigado por testar esse projeto!!! ')
+            break'''
+        
+        match escolha:
+            case 1: ver_pokedex()
+            case 2: comparar_pokemon()
+            case 3: adicionar_pokemon()
+            case 4: remover_pokemon()
+        if escolha == 5:
+            print('Obrigado por testar esse projeto!!!')
             break
+        
 
 
 def ver_pokedex():
@@ -227,19 +238,23 @@ def ver_pokedex():
 [7] Pidgey
 
                                 + Sobre qual pokemon deseja saber? --->  ''')
-    for indice, nome in enumerate(numeração_pokemon, start = 1):
-        print(f'[{indice}] {nome}')
-    escolha_pokemon = int(input('\nEscolha um pokemon: '))
+    try:
+        for indice, nome in enumerate(numeração_pokemon, start = 1):
+            print(f'[{indice}] {nome}')
+        escolha_pokemon = int(input('\nEscolha um pokemon: '))
 
-    escolha_pokemon = numeração_pokemon[escolha_pokemon - 1]
+        escolha_pokemon = numeração_pokemon[escolha_pokemon - 1]
 
-    print(f'\nO pokemon escolhido foi {escolha_pokemon}\n')
+        print(f'\nO pokemon escolhido foi {escolha_pokemon}\n')
 
-    for chave, valor, in pokemon[escolha_pokemon].items():
-        print(f' - {chave}: {valor}')
+        for chave, valor, in pokemon[escolha_pokemon].items():
+            print(f' - {chave}: {valor}')
 
-    #return numeração_pokemon[escolha_pokemon - 1]
 
+    except IndexError:
+        print('A opção escolhida não existe, tente novamente...') 
+        #return numeração_pokemon[escolha_pokemon - 1]
+        
 '''
 
 Pokedex v1.2, antiga funcionadade no codigo como era utilizado.
@@ -295,22 +310,27 @@ def comparar_pokemon():
 ======================
 
 ''')
-    primeiro_pokemon = int(input('Primeira pokemon escolhido >>>> '))
-    segundo_pokemon = int(input('Segundo pokemon escolhido >>>>  '))
+    try:
+        primeiro_pokemon = int(input('Primeira pokemon escolhido >>>> '))
+        segundo_pokemon = int(input('Segundo pokemon escolhido >>>>  '))
 
-    primeiro_pokemon = numeração_pokemon[primeiro_pokemon - 1]
-    segundo_pokemon = numeração_pokemon[segundo_pokemon - 1]
+        primeiro_pokemon = numeração_pokemon[primeiro_pokemon - 1]
+        segundo_pokemon = numeração_pokemon[segundo_pokemon - 1]
 
-    for chave, valor in pokemon[primeiro_pokemon].items():
-        print(f'''
+        for chave, valor in pokemon[primeiro_pokemon].items():
+            print(f'''
         ========= Informações do Primeiro Pokemon =========
         
         {chave}: {valor}''')
-    for chave, valor in pokemon[segundo_pokemon].items():
-        print(f'''
+        for chave, valor in pokemon[segundo_pokemon].items():
+            print(f'''
         ========= Informações do segundo Pokemon =========
         
         {chave}: {valor}''')
+    except IndexError:
+        print('Um dos pokemos ou ambos não existe, tente novamente...')
+        
+        
 
 def adicionar_pokemon():
     pokemon_adicionado = input('Digite um nome para seu pokemon >>> ')
