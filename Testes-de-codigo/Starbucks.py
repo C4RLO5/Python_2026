@@ -28,16 +28,24 @@ Iniciando uma classe com nome, preço e torra. O objetivo nessa etapa
 é apenas demonstrar um metodo que entrega as informações de acordo como é 
 criado o objeto.
 
+Versão 1.1
+
+Protótipo do menu cartalogo
+
+1. Bebidas | --->    1. Geladas 2. Quentes | (Em caso de escolher gelada) ---> 1. Frapuccino 2. Icead de bebidas quentes
+2. Café em grão | ---> 1. Brasil Blend 2. Veranda 3. Colombia
+3. Retail | ---> 1. Copo  2. Garrafa 
+
 
 '''
-class Starbucks:
+class Produto:
     def __init__(self, nome, preço, torra):
         self.nome = nome
         self.preço = preço
         self.torra = torra
-
+    
     def __str__(self):
         return f'''nome -> {self.nome}\npreço -> R$ {self.preço}\ntorra --> {self.torra} '''
 
-produto_1 = Starbucks('Brasil Blend', 54.90, 'Média')
+produto_1 = Produto('Brasil Blend', 54.90, 'Média')
 print(produto_1)
