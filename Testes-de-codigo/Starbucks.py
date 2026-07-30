@@ -34,18 +34,83 @@ Protótipo do menu cartalogo
 
 1. Bebidas | --->    1. Geladas 2. Quentes | (Em caso de escolher gelada) ---> 1. Frapuccino 2. Icead de bebidas quentes
 2. Café em grão | ---> 1. Brasil Blend 2. Veranda 3. Colombia
-3. Retail | ---> 1. Copo  2. Garrafa 
+3. Retail | ---> 1. Copo  2. Garrafa
+
+versão 1.2
+
+protótipo menu adicionar produto(em desenvovlimento):
+
+[Cardapio]
+                
+                [1] Bebidas Frias
+                [2] Bebidas quentes
+                [3] Frappuccinos
+                [4] Chás
+                [5] Refreschers
+                [6] Grãos
 
 
 '''
-class Produto:
-    def __init__(self, nome, preço, torra):
+class Starbucks:
+    def __init__(self, nome, preço):
         self.nome = nome
         self.preço = preço
-        self.torra = torra
-    
-    def __str__(self):
-        return f'''nome -> {self.nome}\npreço -> R$ {self.preço}\ntorra --> {self.torra} '''
 
-produto_1 = Produto('Brasil Blend', 54.90, 'Média')
-print(produto_1)
+    def __str__(self):
+            informativo = '\n'.join([f"{chave} = {valor}" for chave, valor in self.__dict__.items()])
+            return f"{self.__class__.__name__}:{informativo}"
+    #return f'{self.__class__.__name__}: {', '.join([f'{chave} = {valor}' for chave, valor in self.__dict__.items()])}' 
+
+
+    def menu(self):
+        escolha = int(input('''
+                        [ HOME ]
+
+            + DESCUBRA UBE + COCO. Textura cremosa, sensação tropical.
+                - Frappuccino ube coco
+                - Ube latte
+
+
+            + CLIQUE E RETIQUE, na sua Starbucks favorita.
+
+            
+            [1] Adicionar produto
+            [2] Ver o carrinho
+            [3] Remover produto
+
+---> '''))
+        match escolha:
+            case 1:
+                self.menu_adicionar_produto()
+                '''
+                teste1 = Starbucks('','','')
+                print(teste1)
+                '''   
+            case 2: print('teste 2')
+            case 3: print('teste 3')
+    def menu_adicionar_produto(self):
+         escolha = int(input('''
+                
+                    [Cardapio]
+                
+                [1] Bebidas Frias
+                [2] Bebidas quentes
+                [3] Frappuccinos
+                [4] Chás
+                [5] Refreschers
+                [6] Grãos
+
+---> '''))
+         print(escolha)
+             
+class bebida_quente(Starbucks):
+     def __init__(self, nome, preço):
+        super().__init__(nome,preço)
+
+class bebida_fria(Starbucks):
+     def __init__(self, nome, preço):
+          super().__init__(nome, preço)
+
+app_teste= Starbucks("","")
+app_teste.menu()    
+
