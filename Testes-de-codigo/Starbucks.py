@@ -18,7 +18,7 @@ simular um carrinho de compra em um sistema digital da franquia Starbucks.
 O que é possível ter:
 
 1. Adicionar produto
-2. Remover produto
+2. Remover produto 
 3. Concluir Compra
 4. Catalogo(Cafés e bebidas)
 
@@ -45,16 +45,20 @@ protótipo menu adicionar produto(em desenvovlimento):
                 [1] Bebidas Frias
                 [2] Bebidas quentes
                 [3] Frappuccinos
-                [4] Chás
-                [5] Refreschers
-                [6] Grãos
+                [4] Chás ----------------- Descartado da versão inicial
+                [5] Refreschers ----------------- Descartado da versão inicial
+                [6] Grãos ----------------- Descartado da versão inicial
+
+Nessa versão o usúario poderá escolher adicionar um novo produto, logo aṕos aparecerá um cardapio com poucas opções, no momento
+estará disponivel frappucino, bebidas frias e quentes. Entretando com o decorrer de futuras atualizações haverá mais produtos.
 
 
 '''
 class Starbucks:
-    def __init__(self, nome, preço):
+    def __init__(self, nome, preço, tamanho = 'venti'):
         self.nome = nome
         self.preço = preço
+        self.tamanho = tamanho
 
     def __str__(self):
             informativo = '\n'.join([f"{chave} = {valor}" for chave, valor in self.__dict__.items()])
@@ -88,6 +92,8 @@ class Starbucks:
                 '''   
             case 2: print('teste 2')
             case 3: print('teste 3')
+            case _: print('Opção inválida...')
+             
     def menu_adicionar_produto(self):
          escolha = int(input('''
                 
@@ -96,21 +102,46 @@ class Starbucks:
                 [1] Bebidas Frias
                 [2] Bebidas quentes
                 [3] Frappuccinos
-                [4] Chás
-                [5] Refreschers
-                [6] Grãos
+            
 
 ---> '''))
-         print(escolha)
+         match escolha:
+                         case 1:
+                             self.bebidas_frias()
+                         case 2:
+                             print('teste')
+                         case 3:
+                             print('teste')
+                         case _: print('Opção invalida...')
+              
+    def bebidas_frias(self):
+        escolha = int(input('''
+                
+                [1] Caramelo Macchiato (Venti) R$ 
+                [2] Iced Shaken Expresso
+                [3] Vanilha Latte Gelado
+            
+---> '''))
+        match escolha:
+            case 1:
+                gelo_adicional = input('Nivel de gelo na bebida (Pouco / médio / Alto / Sem) --> ')
+                app_itemBebida = self.bebidas_frias('Caramelo Macchiato', 23.90, 'Venti', gelo_bebida = gelo_adicional,)
+                print(f'Obrigado por comprar conoscos, volte sempre!!')
+                print(app_itemBebida)
+              
              
 class bebida_quente(Starbucks):
-     def __init__(self, nome, preço):
-        super().__init__(nome,preço)
+     def __init__(self, nome, preço,tamanho = 'venti', temperatura = 'Extra Hot'):
+        super().__init__(nome,preço,tamanho)
 
 class bebida_fria(Starbucks):
-     def __init__(self, nome, preço):
-          super().__init__(nome, preço)
+     def __init__(self, nome, preço, tamanho = 'venti', gelo_bebida = 'padrão'):
+          super().__init__(nome, preço, tamanho)
+          self.gelo_bebida = gelo_bebida
 
-app_teste= Starbucks("","")
+
+               
+
+app_teste= Starbucks("",0.0,'')
 app_teste.menu()    
 
