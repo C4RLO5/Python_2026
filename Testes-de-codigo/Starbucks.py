@@ -52,8 +52,31 @@ protótipo menu adicionar produto(em desenvovlimento):
 Nessa versão o usúario poderá escolher adicionar um novo produto, logo aṕos aparecerá um cardapio com poucas opções, no momento
 estará disponivel frappucino, bebidas frias e quentes. Entretando com o decorrer de futuras atualizações haverá mais produtos.
 
+Atualizações futuras(Em planejamento):
+
+def menu(self):
+        escolha = int(input('''
+'''  [ HOME ]
+
+            + DESCUBRA UBE + COCO. Textura cremosa, sensação tropical.
+                - Frappuccino ube coco
+                - Ube latte
+
+
+            + CLIQUE E RETIQUE, na sua Starbucks favorita.
+
+            
+            [1] Adicionar produto
+            [2] Ver o carrinho
+            [3] Remover produto
+
+---> #))
+
+O menu acima sofrerá mudanças em linhas de código, por ser tratar de menu, irá ser aplicada a função while para rodar lo até que o uśuario escolha sair/encerrar a compra,
+possivelmente tambem será capaz de observar items/bebidas que foram selecionados no carrinho, porém por enquanto está descartadado.
 
 '''
+
 class Starbucks:
     def __init__(self, nome, preço, tamanho = 'venti'):
         self.nome = nome
@@ -81,6 +104,10 @@ class Starbucks:
             [1] Adicionar produto
             [2] Ver o carrinho
             [3] Remover produto
+
+
+
+            [4] (desenvolvimento)
 
 ---> '''))
         match escolha:
@@ -117,22 +144,34 @@ class Starbucks:
     def bebidas_frias(self):
         escolha = int(input('''
                 
-                [1] Caramelo Macchiato (Venti) R$ 
-                [2] Iced Shaken Expresso
-                [3] Vanilha Latte Gelado
+                [1] Caramelo Macchiato (Venti) R$ 23.90
+                [2] Iced Shaken Expresso (venti) R$ 24.90
+                [3] Vanilha Latte Gelado (Venti) R$ 24.90
             
 ---> '''))
         match escolha:
             case 1:
                 gelo_adicional = input('Nivel de gelo na bebida (Pouco / médio / Alto / Sem) --> ')
-                app_itemBebida = self.bebidas_frias('Caramelo Macchiato', 23.90, 'Venti', gelo_bebida = gelo_adicional,)
-                print(f'Obrigado por comprar conoscos, volte sempre!!')
+                app_itemBebida = bebida_fria('Caramelo Macchiato', 23.90, 'Venti', gelo_bebida = gelo_adicional,)
+                print(f'Obrigado por comprar conosco, volte sempre!!\n')
                 print(app_itemBebida)
+            case 2:
+                gelo_adicional = input('Nivel de gelo na bebida (Pouco / médio / Alto / Sem) --> ')
+                app_itemBebida = bebida_fria('Iced Shaken Expresso', 24.90, 'Venti', gelo_bebida = gelo_adicional,)
+                print(f'Obrigado por comprar conosco, volte sempre!!\n')
+                print(app_itemBebida)
+            case 3:
+                gelo_adicional = input('Nivel de gelo na bebida (Pouco / médio / Alto / Sem) --> ')
+                app_itemBebida = bebida_fria('Vanilha Latte Gelado', 24.90, 'Venti', gelo_bebida = gelo_adicional,)
+                print(f'Obrigado por comprar conosco, volte sempre!!\n')
+                print(app_itemBebida)
+                    
               
              
 class bebida_quente(Starbucks):
      def __init__(self, nome, preço,tamanho = 'venti', temperatura = 'Extra Hot'):
         super().__init__(nome,preço,tamanho)
+        self.temperatura = temperatura
 
 class bebida_fria(Starbucks):
      def __init__(self, nome, preço, tamanho = 'venti', gelo_bebida = 'padrão'):
