@@ -136,7 +136,7 @@ class Starbucks:
                          case 1:
                              self.bebidas_frias()
                          case 2:
-                             print('teste')
+                             self.bebida_quente()
                          case 3:
                              print('teste')
                          case _: print('Opção invalida...')
@@ -165,6 +165,21 @@ class Starbucks:
                 app_itemBebida = bebida_fria('Vanilha Latte Gelado', 24.90, 'Venti', gelo_bebida = gelo_adicional,)
                 print(f'Obrigado por comprar conosco, volte sempre!!\n')
                 print(app_itemBebida)
+
+
+    def bebida_quente(self):
+         escolha = int(input('''
+
+        [] Café Mocha
+        [] Doce de leite Latte
+        [] Cafe Latte
+
+---> '''))
+         match escolha:
+              case 1: print('teste')
+              case 2: print('teste')
+              case 3: print('teste')
+              case _: print('escolha inválida.')
                     
               
              
