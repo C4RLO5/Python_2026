@@ -75,6 +75,7 @@ def menu(self):
 O menu acima sofrerá mudanças em linhas de código, por ser tratar de menu, irá ser aplicada a função while para rodar lo até que o uśuario escolha sair/encerrar a compra,
 possivelmente tambem será capaz de observar items/bebidas que foram selecionados no carrinho, porém por enquanto está descartadado.
 
+
 '''
 
 class Starbucks:
@@ -90,7 +91,8 @@ class Starbucks:
 
 
     def menu(self):
-        escolha = int(input('''
+            try:
+                escolha = int(input('''
                         [ HOME ]
 
             + DESCUBRA UBE + COCO. Textura cremosa, sensação tropical.
@@ -102,24 +104,25 @@ class Starbucks:
 
             
             [1] Adicionar produto
-            [2] Ver o carrinho
+            [2] Ver o carrinho 
             [3] Remover produto
 
 
-
-            [4] (desenvolvimento)
-
 ---> '''))
-        match escolha:
-            case 1:
-                self.menu_adicionar_produto()
-                '''
-                teste1 = Starbucks('','','')
-                print(teste1)
-                '''   
-            case 2: print('teste 2')
-            case 3: print('teste 3')
-            case _: print('Opção inválida...')
+                match escolha:
+
+                    #teste1 = Starbucks('','','')
+                    #print(teste1)
+                        
+                    case 1:
+                        self.menu_adicionar_produto()   
+                    case 2: 
+                      print('teste 2')
+                    case 3: 
+                      print('teste 3')
+                    case _: print('opção invalida') 
+            except ValueError:
+                print('A opção selecionada não pode ser executada.')
              
     def menu_adicionar_produto(self):
          escolha = int(input('''
@@ -133,13 +136,14 @@ class Starbucks:
 
 ---> '''))
          match escolha:
-                         case 1:
-                             self.bebidas_frias()
-                         case 2:
-                             self.bebida_quente()
-                         case 3:
-                             print('teste')
-                         case _: print('Opção invalida...')
+                    case 1:
+                        self.bebidas_frias()
+                    case 2:
+                        self.bebida_quente()
+                    case 3:
+                        print('teste')
+                    case _: 
+                        print('Opção invalida...')
               
     def bebidas_frias(self):
         escolha = int(input('''
@@ -166,7 +170,6 @@ class Starbucks:
                 print(f'Obrigado por comprar conosco, volte sempre!!\n')
                 print(app_itemBebida)
 
-
     def bebida_quente(self):
          escolha = int(input('''
 
@@ -176,9 +179,28 @@ class Starbucks:
 
 ---> '''))
          match escolha:
-              case 1: print('teste')
-              case 2: print('teste')
-              case 3: print('teste')
+              case 1:
+                   tamanho_adicional = input('Qual tamanho gostaria de sua bebida? ( Tall | Grande | Venti ) ? -->').lower().strip
+                   app_itemBebida = ''
+
+                   if tamanho_adicional == 'Tall':
+                        app_itemBebida = bebida_quente('Café Mocha', 20.90, tamanho = tamanho_adicional)
+                   elif tamanho_adicional == 'Grande':
+                        app_itemBebida = bebida_quente('Café Mocha', 22.90, tamanho = tamanho_adicional)
+                   elif tamanho_adicional == 'Venti':
+                        app_itemBebida = bebida_quente('Café Mocha', 24.90, tamanho = tamanho_adicional)
+
+                   print(f'Obrigado por comprar conosco, volte sempre!!\n')
+                   print(app_itemBebida)
+
+              case 2:
+                   app_itemBebida = bebida_quente('Doce de leite Latte', '20.90')
+                   print(f'Obrigado por comprar conosco, volte sempre!!\n')
+                   print(app_itemBebida)
+              case 3:
+                   app_itemBebida = bebida_quente('Café Latte', 16.90)
+                   print(f'Obrigado por comprar conosco, volte sempre!!\n')
+                   print(app_itemBebida)
               case _: print('escolha inválida.')
                     
               
@@ -189,7 +211,7 @@ class bebida_quente(Starbucks):
         self.temperatura = temperatura
 
 class bebida_fria(Starbucks):
-     def __init__(self, nome, preço, tamanho = 'venti', gelo_bebida = 'padrão'):
+     def __init__(self, nome, preço, tamanho = 'venti', gelo_bebida = ''):
           super().__init__(nome, preço, tamanho)
           self.gelo_bebida = gelo_bebida
 
