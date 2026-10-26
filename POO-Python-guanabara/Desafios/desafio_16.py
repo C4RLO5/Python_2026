@@ -1,3 +1,5 @@
+from rich import print
+
 class Funcionario:
     def __init__(self, nome, setor, cargo):
         self.nome = nome
@@ -5,7 +7,7 @@ class Funcionario:
         self.cargo = cargo
 
     def apresentar_funcionario(self):
-        return f'Olá , sou {self.nome} e sou {self.cargo} do setor de {self.setor} da empresa Curso em Video.'
+        return f':hand:Olá , sou {self.nome} e sou {self.cargo} do setor de {self.setor} da empresa Curso em Video.'
 
 
 funcionario_1 = Funcionario('Carlos', 'Analise de dados', 'Desenvolvedor')
